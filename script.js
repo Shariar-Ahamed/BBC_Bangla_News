@@ -1,6 +1,6 @@
 // promise -> pinding, resolve(success), reject(error)
 
-const categoryContainer = document.getElementById ("categoryContainer")
+const categoryContainer = document.getElementById("categoryContainer");
 
 const loadCategory = () => {
   fetch("https://news-api-fs.vercel.app/api/categories") // promise
@@ -10,22 +10,37 @@ const loadCategory = () => {
 
       const categories = data.categories;
       // console.log(categories)
-      showCategory(categories)
+      showCategory(categories);
     })
     .catch((err) => {
       console.log(err);
     });
 };
 
-const showCategory = (categories) => {
-      categories.forEach(cat => {
-        // console.log(cat.title);
 
-        categoryContainer.innerHTML += `
-        <li id="${cat.id}" class="hover:border-b-4 hover:border-red-600 cursor-pointer">${cat.title}</li>       
-        `
-      });
-}
+const showCategory = (categories) => {
+  categories.forEach((cat) => {
+    // console.log(cat.title);
+
+    categoryContainer.innerHTML += `
+        <li id="${cat.id}" class="border-red-600 hover:border-b-4 hover:border-red-600 cursor-pointer">${cat.title}</li>       
+        `;
+  });
+
+
+  categoryContainer.addEventListener("click", (e) => {
+    const allLi = document.querySelectorAll("li");
+
+    allLi.forEach((li) => {
+      li.classList.remove("border-b-4");
+    });
+
+    if (e.target.localName === "li") {
+      console.log(e.target);
+      e.target.classList.add("border-b-4");
+    }
+  });
+};
 
 //Todo--Another Way--
 /*
