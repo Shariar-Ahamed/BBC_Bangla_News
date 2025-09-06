@@ -4,7 +4,7 @@
 
 ### News API
 
-[text](https://news-api-fs.vercel.app/)
+[Click here](https://news-api-fs.vercel.app/)
 
 ---
 
